@@ -8,7 +8,24 @@
 const loaderUtils = require('loader-utils');
 const schemaUtils = require('schema-utils');
 module.exports = function(source){
+    const regGetStyle = /(\d+px)/;
     let opt = loaderUtils.getOptions(this) || {};
-    console.log(opt);
-    return source;
+    let arr = source.split(regGetStyle);
+    let handleSource = '';
+    const regMatchPx = /(\d+)px/;
+    arr.forEach((e)=>{
+        if(regMatchPx.test(e)){
+            let px = e.match(regMatchPx)[1];
+            let rem = px2rem(px,opt.rem);
+            handleSource+=rem;
+        } else {
+            handleSource+=e;
+        }
+    });
+    // console.log(opt);
+    return handleSource;
+}
+
+function px2rem(px,base){
+    return (px/base).toFixed(4)+'rem';
 }

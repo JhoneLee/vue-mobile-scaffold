@@ -2,7 +2,7 @@
 * @Author: liyunjiao2048@163.com
 * @Date:   2019-06-04 16:36:05
 * @Last Modified by:   liyunjiao2048@163.com
-* @Last Modified time: 2019-06-04 17:00:00
+* @Last Modified time: 2019-06-05 13:48:00
 */
 
 const loaderUtils = require('loader-utils');
@@ -29,3 +29,14 @@ module.exports = function(source){
 function px2rem(px,base){
     return (px/base).toFixed(4)+'rem';
 }
+
+
+// module.exports = function (str, conf) {
+//     return str.replace(/\b([\d\.]+)px\b/g, function(s, px) {
+//         px = +px;
+//         if (Math.abs(px) >= conf.min) {
+//             return (px / conf.rem).toFixed(4) + 'rem/* @source-size: ' + px + 'px; */';
+//         }
+//         return s;
+//     });
+// };

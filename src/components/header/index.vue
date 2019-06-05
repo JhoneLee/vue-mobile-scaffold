@@ -1,15 +1,40 @@
 <template>
-    <div class="header">
-        <a href="/" class="logo">
-            <h1>假豆瓣</h1>
-        </a>
-        <nav>
-            <div style="display:none;height:150px;"></div>
-            <span class="search"></span>
-            <a href="https://www.douban.com/doubanapp/dispatch?copy_open=1&amp;from=mdouban&amp;download=1&amp;model=B&amp;copy=1&amp;page=&amp;channel=m_ad_nav&amp;uri=%2F" class="openapp" id="topnav-openapp">打开真豆瓣App</a>
-        </nav>
+    <div class="header" :class="{'is-active':toggleSearch}">
+        <div class="index-show">
+            <a href="/" class="logo">
+                <h1>假豆瓣</h1>
+            </a>
+            <nav>
+                <div style="display:none;height:150px;"></div>
+                <span class="search" @click="handleClickSearchBtn"></span>
+                <a href="https://www.douban.com/doubanapp/dispatch?copy_open=1&amp;from=mdouban&amp;download=1&amp;model=B&amp;copy=1&amp;page=&amp;channel=m_ad_nav&amp;uri=%2F" class="openapp" id="topnav-openapp">打开真豆瓣App</a>
+            </nav>
+        </div>
+        <div class="search-show">
+            <SearchNav></SearchNav>
+        </div>
     </div>
 </template>
+<script>
+    import SearchNav from './searchNav';
+    export default {
+        name:'Header',
+        components:{
+            SearchNav
+        },
+        data(){
+            return {
+                toggleSearch:false
+            }
+        },
+        methods:{
+            handleClickSearchBtn(){
+                this.toggleSearch = true;
+            }
+        }
+    }
+
+</script>
 <style lang="less">
     .header{
         height: 94px;
@@ -18,12 +43,15 @@
         left: 0;
         width: 100%;
         box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0 36px;
         background: #fff;
         box-sizing: border-box;
-        display: flex;
+        .index-show{
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 36px;
+            display: flex;
+            height:100%;
+        }
         .logo{
             margin-right: 30px;
             font-size: 0;
@@ -61,6 +89,14 @@
                 border-radius: 12px;
                 font-weight: 500;
             }
+        }
+        .search-show{
+            display:none;
+        }
+    }
+    .is-active{
+        .search-show{
+            display:block;
         }
     }
 </style>

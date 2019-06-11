@@ -10,9 +10,7 @@
                 <a href="https://www.douban.com/doubanapp/dispatch?copy_open=1&amp;from=mdouban&amp;download=1&amp;model=B&amp;copy=1&amp;page=&amp;channel=m_ad_nav&amp;uri=%2F" class="openapp" id="topnav-openapp">打开真豆瓣App</a>
             </nav>
         </div>
-        <div class="search-show">
-            <SearchNav></SearchNav>
-        </div>
+       <SearchNav :closeSeachNav="closeSeachNav"></SearchNav>
     </div>
 </template>
 <script>
@@ -30,6 +28,9 @@
         methods:{
             handleClickSearchBtn(){
                 this.toggleSearch = true;
+            },
+            closeSeachNav(){
+                this.toggleSearch = false;
             }
         }
     }
@@ -90,12 +91,12 @@
                 font-weight: 500;
             }
         }
-        .search-show{
+        .search-nav{
             display:none;
         }
     }
     .is-active{
-        .search-show{
+        .search-nav{
             display:block;
         }
     }

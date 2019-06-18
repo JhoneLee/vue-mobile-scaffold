@@ -2,7 +2,7 @@
     <div class="home">
         <Header></Header>
         <div class="content">
-            <ItemList/>
+            <ItemList :itemList="itemList"/>
         </div>
     </div>
 </template>
@@ -17,17 +17,24 @@
             ItemList
         },
         methods:{
-            ...mapActions(['itemListActions']),
-            ...mapMutations(['itemListMutations']),
-            storeCommit(){
-                this.$store.commit('itemListMutations',['l','m','n'])
-            }
+            ...mapActions(['getData']),
         },
         computed:{
             ...mapGetters(['itemList'])
         },
         mounted(){
             console.log(this.$store.state)
+        },
+        created(){
+            this.getData({
+                api:'homelist',
+                param:{
+                    pageNo:1,
+                    pageNum:10
+                },
+                type:'h5home',
+                timeout:300000
+            });
         }
     }
 </script>

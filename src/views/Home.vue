@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <div class="content">
-        {{$store.state.home.itemList.join(',')}}
+        {{$store.state.home.getHomeItemList.join(',')}}
         <a @click="storeCommit" style="width:200px;height: 60px;font-size: 28px;">点击试试</a>
         <a @click="itemListActions" style="width:200px;height: 60px;font-size: 28px;">点击试试</a>
     </div>
@@ -20,14 +20,14 @@ export default {
     HelloWorld
   },
   methods:{
-    ...mapActions(['itemListActions']),
-    ...mapMutations(['itemListMutations']),
+    ...mapActions(['homeItemListActions']),
+    ...mapMutations(['homeItemListMutations']),
     storeCommit(){
-        this.$store.commit('itemListMutations',['l','m','n'])
+        this.$store.commit('homeItemListMutations',['l','m','n'])
     }
   },
   computed:{
-    ...mapGetters(['itemList'])
+    ...mapGetters(['getHomeItemList'])
   },
   mounted(){
     console.log(this.$store.state)

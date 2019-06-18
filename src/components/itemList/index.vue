@@ -1,6 +1,6 @@
 <template>
     <ul class="item-list">
-        <Item v-for="(item,i) in list">{{i}}</Item>
+        <Item v-for="(item,i) in itemList" :key="i" :data="item"/>
     </ul>
 </template>
 <script>
@@ -9,10 +9,8 @@
         components:{
             Item
         },
-        data(){
-            return {
-                list:[1,2,3,4,5]
-            }
+        props:{
+            itemList:Array
         },
         created(){
             

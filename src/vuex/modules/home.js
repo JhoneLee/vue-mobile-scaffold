@@ -2,26 +2,26 @@
 * @Author: liyunjiao2048@163.com
 * @Date:   2019-06-12 14:49:56
 * @Last Modified by:   liyunjiao2048@163.com
-* @Last Modified time: 2019-06-12 15:02:15
+* @Last Modified time: 2019-06-18 16:33:16
 */
 
 export default {
     state:{
-        itemList:['e','f','g']
+        homeItemList:['e','f','g']
     },
     getter:{
-        getItemList(state){
+        getHomeItemList(state){
             return state.itemList;
         }
     },
     actions:{
-        itemListActions({commit}){
+        homeItemListActions({commit}){
             console.log('actions')
             commit('itemListMutations',[4,5,6]);
         }
     },
     mutations:{
-        itemListMutations(state,arr=[1,2,3]){
+        homeItemListMutations(state,arr=[1,2,3]){
             console.log('itemListMutations:',state,arr);
             state.itemList = arr;
         }

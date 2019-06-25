@@ -5,6 +5,7 @@
 </template>
 <script>
     import Item from './item';
+    
     export default {
         components:{
             Item
@@ -12,13 +13,24 @@
         props:{
             itemList:Array
         },
+        data(){
+            return {
+                iscroll:null
+            }
+        },
         created(){
+            
+        },
+        mounted(){
             
         }
     };
 </script>
-<style>
+<style lang="less">
     .item-list{
-
+        position: absolute;
+        .item{
+            margin-left: 36px;
+        }
     }
 </style>

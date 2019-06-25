@@ -9,6 +9,7 @@
 <script>
     import Header from '@/components/header';
     import ItemList from '@/components/itemList';
+    import Iscroll from 'iscroll';
     import {mapActions,mapMutations,mapGetters} from 'vuex';
     export default {
         name:'home',
@@ -35,19 +36,21 @@
                 type:'h5home',
                 timeout:300000
             });
+        },
+        mounted(){
+            this.iscroll = new Iscroll('.content');
         }
     }
 </script>
 <style lang="less">
     .home{
         .header{
-            top:0;
-        }
-        h1{
-            color:red;
+            top:-1px;
+            z-index:999;
         }
         .content{
-            margin-top:94px;
+            margin-top:100px;
+            position:relative;
         }
     }
 </style>

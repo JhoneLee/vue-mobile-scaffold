@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import H5index from './views/h5index.vue'
+import Show from './views/Show.vue'
+import componentUi from './views/component-ui/index.vue'
+
+// component-ui组件
+import Toast from './views/component-ui/toast';
 
 Vue.use(Router)
 
@@ -12,6 +17,22 @@ export default new Router({
       path: '/',
       name: 'home',
       component: H5index
+    },
+    {
+      path: '/show',
+      name: 'show',
+      component: Show
+    },
+    {
+      path:'/component-ui',
+      name:'componentUi',
+      component:componentUi,
+      children:[
+        {
+          path:'toast',
+          component:Toast
+        }
+      ]
     },
     {
       path: '/about',

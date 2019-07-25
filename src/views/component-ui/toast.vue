@@ -6,11 +6,27 @@
 </template>
 <script>
     import Toast from '@/component-ui/toast';
+    let time = 0;
     export default {
         methods:{
             testClick(){
-                Toast();
+                Toast({
+                    message:`${time}次点击触发消息弹出`
+                });
+                time++;
             }
+        },
+        created(){
+            let toast = Toast({
+                message:'初始化了组件'
+            });
+            console.log('kkkkkk',toast,toast.$el);
+        },
+        mounted(){
+            let toast = Toast({
+                message:'组件mounted'
+            });
+            console.log('sssssss',toast,toast.$el);
         }
     }
 

@@ -1,7 +1,7 @@
 <template>
     <transition name="toast">
-        <div class="toast">
-            <span>我是一条信息</span>
+        <div v-show="visible" :class="className">
+            <span>{{message}}</span>
         </div>
     </transition>
 </template>
@@ -9,7 +9,21 @@
     export default {
         name:'toast',
         props:{
-            message:String
+            message:String,
+            position:{
+                type:String,
+                default:'middle'
+            }
+        },
+        computed:{
+            className(){
+                return `toast toast-${this.position}`;
+            }
+        },
+        data(){
+            return {
+                visible:false
+            }
         }
     }
 </script>
@@ -23,10 +37,35 @@
         font-size:0;
         display:inline-block;
         position:fixed;
+        border-radius:10px;
+        transition: opacity 1s linear;
         span{
             line-height:48px;
             font-size:32px;
             color:#fff;
         }
+    }
+    .toast-position{
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .toast-middle{
+        top: 50%;
+        &:extend(.toast-position);
+    }
+    .toast-bottom{
+        &:extend(.toast-position);
+        bottom: 100px;
+        
+    }
+    .toast-top{
+        &:extend(.toast-position);
+        left:50%;
+    }
+    .toast-enter-active, .toast-leave-active {
+      transition: opacity 1s;
+    }
+    .toast-enter, .toast-leave-to{
+        opacity:0;
     }
 </style>

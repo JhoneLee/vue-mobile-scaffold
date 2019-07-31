@@ -1,7 +1,7 @@
 <template>
-    <div class="ui-view">
+    <div class="mint-ui-wrapper">
         <h1>
-            <router-link to="/show">{{componentName}}</router-link>
+            <router-link to="/mintUi">{{componentName}}</router-link>
         </h1>
         <div class="content">
             <router-view/>
@@ -17,14 +17,15 @@
             }
         },
         created(){
+            console.log(this.$route)
             let path = this.$route.path;
-            let reg = /\/component-ui\/(\w+)/;
+            let reg = /\/mint-ui-wrapper\/(\w+)/;
             this.componentName = path.match(reg)[1];
         }
     }
 </script>
 <style lang="less">
-    .ui-view{
+    .mint-ui-wrapper{
         >h1{
             height:80px;
             line-height:80px;
@@ -36,8 +37,8 @@
             }
         }
         .content{
-            /*padding:40px;*/
+            padding:0px;
         }
+    }
 
-  }
 </style>

@@ -11,6 +11,9 @@ import Toast from './views/component-ui/toast';
 import Loadmore from './views/component-ui/loadmore';
 // mint-ui 组件
 import MyLoadmore from './views/mint-ui/MyLoadmore';
+import MyInfiniteScroll from './views/mint-ui/MyInfiniteScroll';
+import MySwipe from './views/mint-ui/MySwipe';
+import MyRange from './views/mint-ui/MyRange';
 
 Vue.use(Router)
 
@@ -55,7 +58,20 @@ const router = new Router({
       children:[
         {
           path:'loadmore',
+          name:'myLoadmore',
           component:MyLoadmore
+        },{
+          path:'inifiniteScroll',
+          component:MyInfiniteScroll,
+          name:'MyInfiniteScroll'
+        },{
+          path:'swipe',
+          component:MySwipe,
+          name:'MySwipe'
+        },{
+          path:'range',
+          component:MyRange,
+          name:'MyRange'
         }
       ]
     },

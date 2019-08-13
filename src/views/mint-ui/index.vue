@@ -1,7 +1,7 @@
 <template>
     <div class="mint-ui-wrapper">
         <h1>
-            <router-link to="/mintUi">{{componentName}}</router-link>
+            <router-link to="/mint-ui">{{componentName}}</router-link>
         </h1>
         <div class="content">
             <router-view/>
@@ -17,7 +17,6 @@
             }
         },
         created(){
-            console.log(this.$route)
             let path = this.$route.path;
             let reg = /\/mint-ui-wrapper\/(\w+)/;
             this.componentName = path.match(reg)[1];
